@@ -1,0 +1,13 @@
+{
+    "name":        "bab/rabbitmq-graph",
+    "description": "Draw a graph from your RabbitMQ definitions.",
+    "autoload":{
+        "psr-0":{
+            "Bab": "src/"
+        }
+    },
+    "require":{
+        "php": ">=5.3.3",
+        "alom/graphviz": "dev-master"
+    }
+}
