@@ -14,6 +14,16 @@ $graph = new Bab\RabbitMqGraph\Graph($definitions);
 echo $graph->render();
 ```
 
+To render the graph (in png for example):
+
+```bash
+php samples/00-basic.php > graph.dot
+dot -Tpng -ograph.png graph.dot
+```
+
+For more information about the DOT command, please see the
+[Man page](http://www.graphviz.org/cgi-bin/man?dot)
+
 Requirements
 ------------
 
@@ -28,4 +38,5 @@ Olivier Dolbeau - <odolbeau@gmail.com> - <http://odolbeau.fr><br />
 License
 -------
 
-Bab RabbitMqGraph is licensed under the MIT License - see the `LICENSE` file for details
+Bab RabbitMqGraph is licensed under the MIT License - see the `LICENSE` file
+for details
