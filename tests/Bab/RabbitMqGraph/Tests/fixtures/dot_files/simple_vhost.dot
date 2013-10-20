@@ -1,0 +1,20 @@
+digraph G {
+    subgraph cluster_0 {
+        style=filled;
+        color=lightgrey;
+        label=default;
+        "q:cluster_0:global_dl" [style=filled, label=global_dl, color=green];
+        "q:cluster_0:global" [style=filled, label=global, color=green];
+        "e:cluster_0:global" [style=filled, label=global, color=red];
+        "e:cluster_0:dl" [style=filled, label=dl, color=red];
+        "b:cluster_0:dl:bi" [style=filled, color=yellow, label=bi];
+        "e:cluster_0:dl" -> "b:cluster_0:dl:bi";
+        "b:cluster_0:dl:bi" -> "q:cluster_0:bi_dl";
+        "b:cluster_0:dl:global" [style=filled, color=yellow, label=global];
+        "e:cluster_0:dl" -> "b:cluster_0:dl:global";
+        "b:cluster_0:dl:global" -> "q:cluster_0:global_dl";
+        "b:cluster_0:global:global" [style=filled, color=yellow, label=global];
+        "e:cluster_0:global" -> "b:cluster_0:global:global";
+        "b:cluster_0:global:global" -> "q:cluster_0:global";
+    };
+};
