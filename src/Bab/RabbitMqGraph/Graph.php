@@ -44,7 +44,11 @@ class Graph extends Digraph
         foreach ($this->definitions['bindings'] as $binding) {
             $bindingKey = $this->getBindingKey($binding['vhost'], $binding['routing_key']);
             if (!in_array($bindingKey, $bindingKeys)) {
-                $this->node($bindingKey);
+                $this->node($bindingKey, array(
+                    'style' => 'filled',
+                    'color' => 'yellow',
+                    'label' => $binding['routing_key']
+                ));
                 $bindingKeys[] = $bindingKey;
             }
             $source = $this->getExchangeKey($binding['vhost'], $binding['source']);
@@ -71,7 +75,11 @@ class Graph extends Digraph
             $key = $this->getQueueKey($queue['vhost'], $queue['name']);
 
             $queues[$key] = $queue;
-            $this->node($key);
+            $this->node($key, array(
+                'style' => 'filled',
+                'label' => $queue['name'],
+                'color' => 'green',
+            ));
         }
 
         return $queues;
@@ -89,7 +97,11 @@ class Graph extends Digraph
             $key = $this->getExchangeKey($exchange['vhost'], $exchange['name']);
 
             $exchanges[$key] = $exchange;
-            $this->node($key);
+            $this->node($key, array(
+                'style' => 'filled',
+                'label' => $exchange['name'],
+                'color' => 'red',
+            ));
         }
 
         return $exchanges;
