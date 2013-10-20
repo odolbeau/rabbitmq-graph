@@ -11,6 +11,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $client = new Bab\RabbitMqGraph\Client();
 $definitions = $client->getDefinitions();
-$graph = new Bab\RabbitMqGraph\Graph($definitions);
+$graph = new Bab\RabbitMqGraph\Graph('G', $definitions);
 
 echo $graph->render();
