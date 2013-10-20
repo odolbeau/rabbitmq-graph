@@ -10,17 +10,21 @@
 namespace Bab\RabbitMqGraph;
 
 use Alom\Graphviz\Digraph;
+use Bab\RabbitMqGraph\Exception\UnknownVhostException;
 
 class Graph extends Digraph
 {
     protected $definitions;
+    protected $options;
 
     protected $subGraphs = array();
 
-    public function __construct($id, array $definitions)
+    public function __construct($id, array $definitions, array $options = array())
     {
         parent::__construct($id);
+
         $this->definitions = $definitions;
+        $this->options     = $options;
     }
 
     /**
@@ -28,6 +32,13 @@ class Graph extends Digraph
      */
     public function render($indent = 0, $spaces = self::DEFAULT_INDENT)
     {
+        // Only one vhost asked ?
+        if (isset($this->options['vhost'])) {
+            $this->buildVhost($this->options['vhost']);
+
+            return parent::render($indent, $spaces);
+        }
+
         $cluster=0;
         foreach ($this->definitions['vhosts'] as $vhost) {
             $this->append(new Subgraph(
@@ -41,5 +52,35 @@ class Graph extends Digraph
         }
 
         return parent::render($indent, $spaces);
+    }
+
+    /**
+     * buildVhost
+     *
+     * @param string $vhost
+     *
+     * @return void
+     */
+    protected function buildVhost($vhost)
+    {
+        $vhosts = $this->definitions['vhosts'];
+        array_walk($vhosts, function (&$value, $key) {
+            $value = $value['name'];
+        });
+
+        if (!in_array($vhost, $vhosts)) {
+            throw new UnknownVhostException(sprintf(
+                'Unknown vhost "%s". Available: [%s]',
+                $vhost,
+                implode(', ', $vhosts)
+            ));
+        }
+
+        $this->append(new Subgraph(
+            "cluster_0",
+            $this,
+            $vhost,
+            $this->definitions
+        ));
     }
 }
