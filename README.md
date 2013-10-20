@@ -17,8 +17,8 @@ echo $graph->render();
 To render the graph (in png for example):
 
 ```bash
-php samples/00-basic.php > graph.dot
-dot -Tpng -ograph.png graph.dot
+php samples/00-basic.php > target/graph.dot
+dot -Tpng -otarget/graph.png target/graph.dot
 ```
 
 For more information about the DOT command, please see the
