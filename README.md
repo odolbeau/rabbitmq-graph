@@ -19,6 +19,9 @@ To render the graph (in png for example):
 ```bash
 php samples/00-basic.php > target/graph.dot
 dot -Tpng -otarget/graph.png target/graph.dot
+
+# One line
+php samples/00-basic.php > target/graph.dot && dot -Tpng -otarget/graph.png target/graph.dot && open target/graph.png
 ```
 
 For more information about the DOT command, please see the
