@@ -42,7 +42,7 @@ class Graph extends Digraph
 
         $bindingKeys = array();
         foreach ($this->definitions['bindings'] as $binding) {
-            $bindingKey = $this->getBindingKey($binding['vhost'], $binding['routing_key']);
+            $bindingKey = $this->getBindingKey($binding['vhost'], $binding['source'], $binding['routing_key']);
             if (!in_array($bindingKey, $bindingKeys)) {
                 $this->node($bindingKey, array(
                     'style' => 'filled',
@@ -145,15 +145,17 @@ class Graph extends Digraph
      * getBindingKey
      *
      * @param string $vhost
+     * @param string $source
      * @param string $routingKey
      *
      * @return string
      */
-    protected function getBindingKey($vhost, $routingKey)
+    protected function getBindingKey($vhost, $source, $routingKey)
     {
         return sprintf(
-            'b:%s:%s',
+            'b:%s:%s:%s',
             $vhost,
+            $source,
             $routingKey
         );
     }
