@@ -1,6 +1,8 @@
 Bab RabbitMqGraph - Represent your RabbitMQ as a graph
 ======================================================
 
+[![Build Status](https://travis-ci.org/odolbeau/rabbitmq-graph.png)](https://travis-ci.org/odolbeau/rabbitmq-graph)
+
 Usage
 -----
 
