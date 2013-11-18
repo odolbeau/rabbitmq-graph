@@ -32,6 +32,10 @@ class Graph extends Digraph
      */
     public function render($indent = 0, $spaces = self::DEFAULT_INDENT)
     {
+        if (isset($this->options['graph'])) {
+            $this->attr('graph', $this->options['graph']);
+        }
+
         // Only one vhost asked ?
         if (isset($this->options['vhost'])) {
             $this->buildVhost($this->options['vhost']);
@@ -82,5 +86,22 @@ class Graph extends Digraph
             $vhost,
             $this->definitions
         ));
+    }
+
+    /**
+     * setGraphArguments
+     *
+     * @param array $arguments
+     *
+     * @return void
+     */
+    protected function setGraphArguments(array $arguments)
+    {
+        foreach ($arguments as $name => $value) {
+            if (!is_array($value)) {
+                $value = array($value);
+            }
+            $this->attr($name, $value);
+        }
     }
 }
