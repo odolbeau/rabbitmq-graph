@@ -1,5 +1,5 @@
 {
-    "name": "bab/rabbitmq-graph",
+    "name": "odolbeau/rabbitmq-graph",
     "description": "Draw a graph from your RabbitMQ definitions.",
     "keywords": ["RabbitMQ", "graph", "graphviz", "dot"],
     "homepage": "http://github.com/odolbeau/rabbitmq-graph",
