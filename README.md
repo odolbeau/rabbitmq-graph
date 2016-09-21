@@ -1,10 +1,13 @@
-Bab RabbitMqGraph - Represent your RabbitMQ as a graph
-======================================================
+# Bab RabbitMqGraph - Represent your RabbitMQ as a graph
 
 [![Build Status](https://travis-ci.org/odolbeau/rabbitmq-graph.png)](https://travis-ci.org/odolbeau/rabbitmq-graph)
 
-Usage
------
+## Installation
+
+You need to have `graphviz` installed locally.
+To install dependency, run `composer install`.
+
+## Usage
 
 This library allow you to create Dot Graph from your RabbitMQ definitions:
 
@@ -29,19 +32,11 @@ php samples/00-basic.php > target/graph.dot && dot -Tpng -otarget/graph.png targ
 For more information about the DOT command, please see the
 [Man page](http://www.graphviz.org/cgi-bin/man?dot)
 
-Requirements
-------------
-
-- PHP 5.3
-- [optional] PHPUnit 3.5+ to execute test suite
-
-Author
-------
+# Author
 
 Olivier Dolbeau - <odolbeau@gmail.com> - <http://odolbeau.fr><br />
 
-License
--------
+# License
 
-Bab RabbitMqGraph is licensed under the MIT License - see the `LICENSE` file
-for details
+This project is licensed under the MIT License - see the `LICENSE` file for
+details.
